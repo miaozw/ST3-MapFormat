@@ -1,0 +1,6 @@
+[
+    {
+        "keys": ["ctrl+alt+g"],
+        "command": "map_format"
+    }
+]
