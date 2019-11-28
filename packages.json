@@ -1,0 +1,20 @@
+{
+    "packages": [
+        {
+            "author": "miaozw",
+            "description": "for a java. map toString",
+            "homepage": "https://github.com/miaozw/ST3-MapFormat",
+            "last_modified": "2019-11-28 16:28:55",
+            "name": "MapFormat",
+            "platforms": {
+                "*": [
+                    {
+                        "url": "https://github.com/miaozw/ST3-MapFormat",
+                        "version": "1.0"
+                    }
+                ]
+            }
+        }
+    ],
+    "schema_version": "1.0"
+}
