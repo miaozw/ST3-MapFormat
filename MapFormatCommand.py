@@ -42,7 +42,7 @@ class MapFormatCommand(sublime_plugin.TextCommand):
 			finaltext = finaltext.replace(" ]", "\"\"]");
 			textJson = json.loads(finaltext)
 		
-		finaltext = json.dumps(textJson, sort_keys=True, indent=4, separators=(',', ':'))
+		finaltext = json.dumps(textJson, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'))
 
 		# 替换最后的文本
 		self.view.replace(edit, sublime.Region(0, self.view.size()), finaltext)
