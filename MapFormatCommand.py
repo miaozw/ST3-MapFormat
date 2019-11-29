@@ -10,7 +10,7 @@ class MapFormatCommand(sublime_plugin.TextCommand):
 		print("run...")
 		# 获取输入的文本
 		file_text = self.view.substr(sublime.Region(0, self.view.size()))
-		print(file_text)
+		# print(file_text)
 		# print(s.get('token', '123'))
 		finaltext = ""
 		textlist = list(file_text)
@@ -28,8 +28,21 @@ class MapFormatCommand(sublime_plugin.TextCommand):
 				c = ':'
 			finaltext += c
 
-		textJson = json.loads(finaltext)
-		js = json.dumps(textJson, sort_keys=True, indent=4, separators=(',', ':'))
+	
+		textJson = ""
+		try:
+			print("normal type")
+			textJson = json.loads(finaltext)
+		except Exception as e:
+			print("array null type")
+			finaltext = finaltext.replace(":,", ":\"\",");
+			finaltext = finaltext.replace(": ,", ":\"\",");
+			finaltext = finaltext.replace("[,", "[\"\",");
+			finaltext = finaltext.replace(" ,", "\"\",");
+			finaltext = finaltext.replace(" ]", "\"\"]");
+			textJson = json.loads(finaltext)
+		
+		finaltext = json.dumps(textJson, sort_keys=True, indent=4, separators=(',', ':'))
 
 		# 替换最后的文本
-		self.view.replace(edit, sublime.Region(0, self.view.size()), js)
+		self.view.replace(edit, sublime.Region(0, self.view.size()), finaltext)
